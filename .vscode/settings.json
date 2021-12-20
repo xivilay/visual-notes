@@ -1,0 +1,8 @@
+{
+    "C_Cpp.intelliSenseEngine": "Default",
+    "C_Cpp.default.cppStandard": "c++17",
+    "cmake.buildDirectory": "${workspaceFolder}/build",
+    "cmake.configureOnOpen": true,
+    "lldb.showDisassembly": "auto",
+    "lldb.dereferencePointers": true
+}

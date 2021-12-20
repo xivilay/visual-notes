@@ -1,0 +1,19 @@
+{
+    "configurations": [
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "CMake Standalone",
+            "program": "${command:cmake.launchTargetPath}",
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "attach",
+            "name": "Attach to AudioHost",
+            "program": "AudioPluginHost.exe",
+            "pid": "${command:pickMyProcess}"
+        }
+    ]
+}
