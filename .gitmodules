@@ -1,0 +1,6 @@
+[submodule "react-juce"]
+	path = external/react-juce
+	url = https://github.com/nick-thompson/react-juce.git
+[submodule "ui"]
+	path = ui
+	url = https://github.com/xivilay/visual-notes-ui.git
