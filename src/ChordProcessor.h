@@ -2,10 +2,10 @@
 
 #include "CustomEditor.h"
 
-class ChordProcessor : public AudioProcessor, private Timer {
+class NotesProcessor : public AudioProcessor, private Timer {
    public:
-    ChordProcessor() : AudioProcessor(BusesProperties()) {}
-    ~ChordProcessor() { stopTimer(); }
+    NotesProcessor() : AudioProcessor(BusesProperties()) {}
+    ~NotesProcessor() { stopTimer(); }
 
     const String getName() const { return ProjectInfo::projectName; }
 
@@ -85,5 +85,5 @@ class ChordProcessor : public AudioProcessor, private Timer {
                                                 : BusesProperties();
     }
 
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(ChordProcessor)
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(NotesProcessor)
 };
