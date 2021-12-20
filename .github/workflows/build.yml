@@ -1,0 +1,48 @@
+name: CMakeBuild
+
+on: [push]
+
+env:
+  BUILD_TYPE: Release
+  PROJECT_NAME: VisualNotes
+  RUNNER: windows-x64
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+    - name: Get latest CMake
+      uses: lukka/get-cmake@latest
+
+    - name: Checkout code
+      uses: actions/checkout@v2
+      with:
+        submodules: recursive
+        token: ${{secrets.PAT}}
+
+    - name: Install Submodule Dependencies
+      working-directory: ./ui
+      run: yarn install
+
+    - name: Build JS
+      working-directory: ./ui
+      run: yarn build
+
+    - name: Cmake Configure
+      run: cmake -B ${{github.workspace}}/build -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}}
+    
+    - name: Cmake Build
+      run: cmake --build ${{github.workspace}}/build --config ${{env.BUILD_TYPE}}
+
+    - name: Zip
+        working-directory: ${{github.workspace}}/build/${{env.PROJECT_NAME}}_artefacts/${{env.BUILD_TYPE}}
+        run: cmake -E tar cv ${{github.workspace}}/build/${{env.PROJECT_NAME}}_${{ env.RUNNER }}.7z --format=7zip VST3/${{env.PROJECT_NAME}}.vst3
+
+    - name: Upload artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: ${{env.PROJECT_NAME}}_${{ env.RUNNER }}
+          path: ${{github.workspace}}/build/${{env.PROJECT_NAME}}_${{ env.RUNNER }}.7z
+          if-no-files-found: error
+          retention-days: 1
