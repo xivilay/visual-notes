@@ -65,7 +65,7 @@ class ChordProcessor : public AudioProcessor, private Timer {
     std::unordered_set<int> notes;
 
     const short WIDTH = 740;
-    const short HEIGHT = 840;
+    const short HEIGHT = 740;
 
     void storeNotes(MidiBuffer& midiMessages) {
         for (const auto metadata : midiMessages) {
