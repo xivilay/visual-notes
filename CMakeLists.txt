@@ -6,8 +6,9 @@ set(SOURCES src/Main.cpp)
 set(FORMATS VST3)
 
 set(REACT_JUCE "react_juce")
-set(REACT_JUCE_DIR "external/react-juce/${REACT_JUCE}")
-set(JUCE_DIR "${REACT_JUCE_DIR}/ext/juce")
+set(REACT_JUCE_PATH "external/react-juce")
+set(REACT_JUCE_DIR "${REACT_JUCE_PATH}/${REACT_JUCE}")
+set(JUCE_DIR "${REACT_JUCE_PATH}/ext/juce")
 
 project(${PROJECT_NAME} VERSION ${VERSION})
 
