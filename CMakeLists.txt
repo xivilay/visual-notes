@@ -1,13 +1,13 @@
 cmake_minimum_required(VERSION 3.15)
 
-set(VERSION 0.1.0)
-set(PROJECT_NAME MidiChordRecognition)
+set(VERSION 0.0.1)
+set(PROJECT_NAME VisualNotes)
 set(SOURCES src/Main.cpp)
 set(FORMATS VST3)
 
 set(REACT_JUCE "react_juce")
-set(REACT_JUCE_DIR "juce-react/${REACT_JUCE}")
-set(JUCE_DIR "juce-react/ext/juce")
+set(REACT_JUCE_DIR "external/react-juce/${REACT_JUCE}")
+set(JUCE_DIR "${REACT_JUCE_DIR}/ext/juce")
 
 project(${PROJECT_NAME} VERSION ${VERSION})
 
@@ -23,13 +23,13 @@ juce_add_plugin(${PROJECT_NAME}
     NEEDS_MIDI_INPUT TRUE
     NEEDS_MIDI_OUTPUT FALSE
     PLUGIN_MANUFACTURER_CODE Xivy
-    PLUGIN_CODE Xiv7
+    PLUGIN_CODE Xiv6
     FORMATS ${FORMATS}
     PRODUCT_NAME "${PROJECT_NAME}"
 )
 
 juce_add_binary_data(BinaryData SOURCES
-    "jsui/build/js/main.js"
+    "ui/build/js/main.js"
 )
 
 juce_generate_juce_header(${PROJECT_NAME})
